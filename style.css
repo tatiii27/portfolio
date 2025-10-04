@@ -1,15 +1,6 @@
 body {
-
-
-    font: 100%/1.5 system-ui;
-    margin: 2rem;
-    max-width: 70ch
-}
-
-
-img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px
+  /* Set line height to 1.5 times the font size
+     and use the OS’s UI font as the website font
+  */
+  font: 100%/1.5 system-ui;
 }
