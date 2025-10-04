@@ -1,0 +1,15 @@
+body {
+
+
+    font: 100%/1.5 system-ui;
+    margin: 2rem;
+    max-width: 70ch
+}
+
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px
+}
