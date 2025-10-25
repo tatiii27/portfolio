@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <title>Project 2 Report</title>
+    <style>
+      :root {
+        --color-neutral-95: hsl(220 10% 95%);
+        --color-neutral-90: hsl(220 10% 90%);
+        --color-neutral-80: hsl(220 10% 80%);
+        --color-neutral-70: hsl(220 10% 70%);
+        --color-neutral-60: hsl(220 10% 60%);
+        --color-neutral-50: hsl(220 10% 50%);
+        --color-neutral-40: hsl(220 10% 40%);
+        --color-neutral-30: hsl(220 10% 30%);
+        --color-neutral-20: hsl(220 10% 20%);
+        --color-neutral-10: hsl(220 10% 10%);
+      }
+
+      html {
+        font: 100%/1.5 system-ui;
+        counter-reset: figure;
+        background: var(--color-neutral-95);
+        max-width: min(75vw, 80em);
+        margin: 0 auto;
+      }
+
+      /* Headings */
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        line-height: 1.1;
+        font-weight: 600;
+        text-wrap: balance;
+      }
+
+      h1,
+      h2 {
+        border-bottom: 1px solid var(--color-neutral-80);
+        padding-bottom: 0.2em;
+      }
+
+      h1 {
+        margin-block: 1em 0.5rem;
+        font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
+        font-weight: 800;
+
+        small {
+          display: block;
+          width: fit-content;
+          padding: 0.2em 0.5em;
+          margin-inline: auto;
+          color: white;
+          background: var(--color-neutral-40);
+          font-size: 40%;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+      }
+
+      h2 {
+        font-size: 180%;
+        color: var(--color-neutral-30);
+      }
+
+      h3 {
+        font-size: 130%;
+      }
+
+      /* Lists */
+
+      ul,
+      ol {
+        padding-inline-start: 2em;
+      }
+
+      li {
+        &::marker {
+          color: var(--color-neutral-40);
+        }
+
+        + li {
+          margin-top: 0.2em;
+        }
+      }
+
+      /* Sectioning elements */
+
+      header {
+        padding-block: 1em;
+        text-align: center;
+      }
+
+      main {
+        background: white;
+        color: var(--color-neutral-20);
+        border-radius: 1rem;
+        padding: 0.1rem 2rem;
+      }
+
+      /* Figures */
+
+      figure {
+        margin: 1em 0;
+        padding: 0.5rem;
+        margin-inline: -0.5em;
+        border: 1px solid var(--color-neutral-80);
+        box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
+        text-align: center;
+        background: white;
+
+        > figcaption {
+          font: 500 75% var(--font-sans);
+          background: var(--color-neutral-95);
+          padding: 0.5rem;
+          margin: -0.5rem;
+          margin-top: 0.5rem;
+          counter-increment: figure;
+          text-align: left;
+
+          &::before {
+            content: 'Figure ' counter(figure) ': ';
+            font-weight: bold;
+            color: var(--color-neutral-40);
+          }
+
+          a:not(:hover, :focus, :active) {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-color: color-mix(
+              in lab,
+              currentColor,
+              transparent 70%
+            );
+          }
+        }
+      }
+    </style>
+    
+    <script src="./js/global.js" defer></script>
+    <link rel="stylesheet" href="./css/style.css?v=2">
+
+
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <small>Assignment 4</small>
+        Persuasive or Deceptive Visualization?
+      </h1>
+
+      <p><strong>Tatianna Sanchez</strong> — <em>t1sanchez@ucsd.edu</em></p>
+    </header>
+
+    <main>
+      <h2>Proposition</h2>
+
+      <section>
+        <h3>Crime in the U.S. Has Declined Significantly Since the 1990s</h3>
+
+        <figure class="graph">
+          <img id="pro-plot" src="./images/pro.png" alt="Percent change in property and violent crimes, 1960–2014 (5-year moving average)">
+          <figcaption>
+            <strong>America's Crime Wave Is Long Behind Us.</strong>
+            Per-capita crime rates (crimes per 100,000 residents, 5-year moving average), 1960–2014.
+            <em class="source"> Source: FBI Uniform Crime Reports (1960–2014). 5-year moving average applied.</em>
+          </figcaption>
+        </figure>
+
+        <p>Design Decisions and Rationale:</p>
+
+        <ul>
+          <li><strong>Per-capita conversion</strong> using the population for each year as denominators so years are comparable.</li>
+          <div class="meta">Avoids misleading conclusions from raw counts as the U.S. population grew; measures the amount of crime per person.</div>
+          <span class="score pos">+2</span>
+          </li>
+          <li><strong>5-year centered moving average (MA)</strong> on both plots
+          <div class="meta">Creates a smoother line to better see the rise and fall within the data by reducing the noise.</div>
+          <span class="score pos">+0.5</span>
+          </li>
+          <li><strong>Full length y-axis</strong> with gridlines
+          <div class="meta">The full legnth y-axis prevents exaggeration while the gridlines allow for more accurate data retrieval from plot.</div>
+          <span class="score pos">+2</span>
+          </li>
+          <li><strong>Peak callout (1991)</strong>
+          <div class="meta">Annotation that grabs the readers attention to the highest point of the data for both types of crime</div>
+          <span class="score pos">+1</span>
+          </li>
+          <li><strong>Consistent Color Pallete</strong>(Property = blue, Violent = red) used in both plots
+          <div class="meta">Aids comparison between the two charts; color just represents identity of each variable.</div>
+          <span class="score pos">+1.5</span>
+          </li>
+          <li><strong>Crime decrease annotations (property and violent) pointing to end of lines</strong></li>
+          <div class="meta">Emphasizes the lowest part of the line as the decrease in crime throughout the years; both types of crimes reaching an almost 50% decrease from the peak works well in persuading readers that there is less crime. It works as a way to keep the readers thinking about the main idea which is a decrease in crime.</div>
+          <span class="score pos">+2</span>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Percent change in property and violent crimes (1960-2014)</h3>
+
+        <figure class = "graph">
+          <img class="plot" src="./images/con.png" alt="Percent change since 1960 for violent crime, 5-year moving average">
+          <figcaption><strong>America Is Becoming More Violent</strong> Per-Capita Violent and Property Crime Rates, 1960–2014</figcaption>
+        </figure>
+
+        <p>Design Decisions and Rationale:</p>
+
+        <ul>
+          <li><strong>Re-expressing values as percent change since 1990</strong>
+          <div class="meta">A transformation that doesnt focus on the data directly how it was collected rather the change in that data, which makes the information look differently and can encourage mal interpretations. </div>
+          <span class="score neg">-1</span>
+          </li>
+          <li><strong>Indexing to baseline (1960 = 0%)</strong>
+          <span class="mate">A transformation that reframes the question to focus on how far the crime data has changed from the 1960s. It makes it so the audeince compares the rest of the data to it.</span>
+          <span class="score pos">+1</span>
+          </li>
+          <li><strong>Off-red shadow box around the peaks</strong>
+          <div class = "meta">Emphasizes the high points in the data, and the color is intended to be associated with higher violent crime rates, which emphasizes the vast increase in violent crimes within America. </div>
+          <span class="score neg">-0.5</span>
+          </li>
+          <li><strong>Visible 0% reference line</strong>
+          <div class="meta">Clarifies the lowest point on the graph, which acts like a guide for the user to easily compare the rest of the data to it; clarifies and emphasizes the starting point.</div>
+          <span class="score pos">+1</span>
+          </li>
+          <li><strong>Same color pallete and smoothing technique</strong>
+          <div class="meta">Makes it so both of the plots are comparable and easy to interpret/read.</div>
+          <span class="score pos">+2</span>
+          </li>
+          <li><strong>Violent crime callout</strong></li>
+          <div class="meta">Annotation that grabs the readers attention to the large difference in crime rates from baseline (1960s).</div>
+          <span class="score neg">-1</span>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Final Reflection</h2>
+
+
+        <p>This project challenged me to think critically about how visual and textual framing shape interpretation. Designing both plots with the same data, but expressed differently through transformations was very telling into how biased graphs can be. Plot A, which displayed crimes per 100,000 residents, felt more neutral and factual, showing clear declines since 1991. On the other hand, Plot B was more difficult to create due to the critical thinking involved in how I needed to transform the data to tell a different story within the same dataset. It expressed percent change since 1960, which magnified the rise from a low baseline (1960 = 0%) and visually emphasized the long-term increase in violent crime. From there is when it became clear the effect design choices alone have on altering the emotional impact without changing the underlying data.</p>
+
+
+        <p>The process was both straight forward and tricky. Calculating per-capita rates and applying a 5-year moving average were simple technical steps compared to figuring out the position of the opposing view. Overall, the smaller decisions such as axis scaling, color selection, and title phrasing had large effects on the tone. I learned that persuasive visualization lies less in data manipulation and more in subtle framing such as choosing what baseline, what to emphasize, and what to exclude. It's crazy, but even hoest charts can lead viewers toward different conclusions depending on the way they are framed.</p>
+
+        
+        <p>As a result of this project, I would define "ethical analysis and visualization" as the practice of making intentional, transparent, and fair choices that provide understanding rather than distortion. Ethical persuasion can still be emotional and engaging, the only thing it can't be is misleading, in other words, there has to be truth in what youre saying. Some acceptable tactics include choosing a different yet meaningful baseline and emphasizing key trends help clarify the story. Misleading ones hide context, exxagerate magnitude, or rely on hidden transformations. It is hard to draw bounds to distinguish "acceptable" vs. "misleading" persuasive choices, but the difference might actually be disclosure to the viewers, that is the changes being done need to be expressed openly for the audience to see, that way it is up to the reader to think critically and decide their viewpoint on the matter.</p> 
+      
+
+        <h3>Dataset</h3>
+        <a href="https://www.kaggle.com/datasets/mahmoudshogaa/us-crime-rates-1960-2014">US_Crime_Rates_1960_2014</a>
+      </section>
+    </main>
+  </body>
+</html>

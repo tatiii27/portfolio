@@ -1,0 +1,21 @@
+body {
+     font: 100%/1.5 system-ui;
+  /* 100% = default font size, 1.5 = line-height */
+  font: 100%/1.5 system-ui;
+}
+
+:root {
+  --graph-max: 800px;     
+}
+
+figure.graph {
+  max-width: var(--graph-max);
+  margin: 1rem auto;       /* center the figure block */
+}
+
+figure.graph > img {
+  display: block;
+  width: 100%;             /* fill the figure’s width */
+  height: auto;            /* keep aspect ratio */
+}
+

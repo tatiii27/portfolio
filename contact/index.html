@@ -3,41 +3,38 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>(() => {
+        const v = localStorage.colorScheme || "light dark";
+        document.documentElement.style.setProperty("color-scheme", v);})();</script>
     <title>Contact - Tatianna Sanchez</title>
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../style.css" />
+    
 </head>
 <body>
-    <nav>
-        <a href="../">Home</a>
-        <a href="../projects/">Projects</a>
-        <a href="../contact/">Contact</a>
-        <a href="../cv/">CV</a>
-        <a href="https://github.com/tatiii27" target="_blank" rel="noopener">GitHub</a>
-    </nav>
-
+    <script type="module" src="../global.js"></script>
     <h1>Contact</h1>
     <p>Use the form below to get in touch.</p>
 
-    <form action="mailto:t1sanchez@ucsd.edu" method="POST" enctype="text/plain">
+    <form class="contact-form" action="mailto:t1sanchez@ucsd.edu" method="POST" enctype="text/plain">
         <label>
-            Email:
-            <input type="email" name="email" value="you@example.com" required>
+            <span>Email</span>
+            <input type="email" name="email" required>
         </label>
-        <br><br>
+      
 
         <label>
-            Subject:
-            <input name="subject" value="Hello from your portfolio site">
+            <span>Subject</span>
+            <input type="text" name="subject">
         </label>
-        <br><br>
+   
 
         <label>
-            Body:
-            <textarea name="body" rows="5">Just reaching out…</textarea>
+            <span>Message</span>
+            <textarea name="body" rows="5"></textarea>
         </label>
-        <br><br>
+       
 
-        <button>Submit</button>
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>

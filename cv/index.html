@@ -3,61 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(() => {
+        const v = localStorage.colorScheme || "light dark";
+        document.documentElement.style.setProperty("color-scheme", v);})();</script>
     <title>CV - Tatianna Sanchez</title>
     <link rel="stylesheet" href="../style.css" />
-</head>
-<body>
-    <nav>
-        <a href="../">Home</a>
-        <a href="../projects/">Projects</a>
-        <a href="../contact/">Contact</a>
-        <a href="../cv/">CV</a>
-        <a href="https://github.com/tatiii27" target="_blank" rel="noopener">GitHub</a>"
-    </nav>
-
     
-    <h1>Curriculum Vitae</h1>
+</head>
+<body class="cv-page">
+    <script type="module" src="../global.js"></script>
+    <header class="cv-header">
+        <h1>Tatianna Sanchez</h1>
+        <p class="cv-tagline">Machine Learning and Data Science Candidate </p>
 
-    <section>
-        <header>
-            <h2>Education</h2>
-        </header>
-        <p><strong>UC San Diego</strong> — Master’s in Data Science  
-            <time>2024 – 2026</time></p>
-        <p><strong>UC San Diego</strong> — Bachelor’s in [Your Major]  
-            <time>2020 – 2024</time></p>
-    </section>
-  
-  
-    <section>
-        <header>
-            <h2>Experience</h2>
-        </header>
-        <article>
-            <h3>Data Science Intern — Company Name</h3>
-            <time>Summer 2025</time>
-            <p>Worked on machine learning models for classification tasks using large datasets.  
-                Improved accuracy by 10% with optimized preprocessing.</p>
-        </article>
-
-        <article>
-            <h3>Research Assistant — UCSD</h3>
-            <time>2024 – 2025</time>
-            <p>Assisted with statistical modeling and data visualization for biology datasets.  
-                Created reproducible Python notebooks for the lab team.</p>
-        </article>
-    </section>
-
-    <section>
-        <header>
-            <h2>Skills</h2>
-        </header>
-        <ul>
-            <li>Python, R, SQL</li>
-            <li>Machine Learning (Scikit-learn, Spark MLlib)</li>
-            <li>Data Visualization (Matplotlib, Seaborn, D3.js)</li>
-            <li>Git/GitHub, Linux, Bash</li>
+        <ul class="cv-contact">
+            <li>San Diego, CA</li>
+            <li><a href="mailto:t1sanchez@ucsd.edu">t1sanchez@ucsd.edu</a></li>
+            <li><a href="https://github.com/tatiii27" target="_blank" rel="noopener">github.com/tatiii27</a></li>
         </ul>
-    </section>
+    </header>
+
+    <main class="cv">
+        <section>
+            <h2>Professional Summary</h2>
+            <p>
+                UC San Diego Data Science graduate student focused on machine learning and unsupervised learning. Experienced in building predictive models and integrating AI systems to enhance real-world performance.
+            </p>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <ul class="tag-list">
+                <li>Machine Learning</li><li>Deep Learning</li><li>Python</li><li>SQL</li><li>Spark</li>
+                <li>TensorFlow</li><li>Pytorch</li><li>Pandas</li><li>NumPy</li><li>Scikit-learn</li>
+                <li>Data Visualization</li><li>Feature Engineering</li><li>NLP</li><li>Model Evaluation</li> 
+            </ul>
+        </section>
+
+        <section>
+            <h2>Projects & Experience</h2>
+
+            <article class="item">
+                <div class="meta">
+                    <h3>AI Developer Intern - RoyalT Gold Skincare</h3>
+                    <span class="place">Remote</span>
+                    <span class="dates">Aug 2025 - December 2025</span>
+                </div>
+                <ul class="bullets">
+                    <li>Developed and optimized AI-powered chatbots and automation tools to enhance user experience.</li>
+                    <li>Applied ML to improve content recommendations and predictive engagement systems.</li>
+                </ul>
+            </article>
+
+            <article class="item">
+                <div class="meta">
+                    <h3>Intergen Innovators Internship - VillageCore</h3>
+                    <span class="place">-</span>
+                    <span class="dates">Summer 2025</span>
+                </div>
+                <ul class="bullets">
+                    <li>Completed 6-week applied AI internship building and optimizing ML models; practiced prompt engineering.</li>
+                    <li>Co-designed an AI solution for seniors with Alzheimer's to improve daily life via adaptive tech.</li>
+                    <li>Presented at a final hackathon to 12 companies; work led to securing AI internship at RoyalT Gold Skincare.</li>
+                </ul>
+            </article>
+        </section>
+
+
+    </main>
 </body>
 </html>
