@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Project 2: Persuasive or Deceptive Visualization?",
+    "year": "2024",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Analysis of how design choices can persuade or mislead when showing US crime trends.",
+    "href": "./project2/index.html"
+  },
+  {
+    "title": "Skincare Visualization (D3)",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Best product per category — price vs. rating + brand leaderboard.",
+    "href": "./skincare-viz/index.html"
+  },
+  {
+    "title": "Lorem ipsum dolor sit.",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error obcaecati similique quae beatae iure a sapiente exercitationem repellat quidem!"
+  },
+  {
+    "title": "Est quas at expedita?",
+    "year": "2024",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Ipsum, culpa officiis expedita debitis tempore optio dolores laudantium maiores facilis fugit aspernatur voluptas provident nisi."
+  }
+]
+
+
