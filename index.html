@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
+  <title>Tatianna Sanchez — Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script>(() => {
-    const v = localStorage.colorScheme || "light dark";
-    document.documentElement.style.setProperty("color-scheme", v);})();</script>
-  <title>Tatianna Sanchez: Personal site and Portfolio</title>
-  <link rel="stylesheet" href="./style.css" />
- 
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    (() => {
+      const v = localStorage.colorScheme || "light dark";
+      document.documentElement.style.setProperty("color-scheme", v);
+    })();
+  </script>
 </head>
 <body>
-  <script type="module" src = "./global.js"></script>
-  <h1>Tatianna Sanchez</h1>
+  <main>
+    <section class="hero">
+      <h1>Tatianna Sanchez</h1>
+      <img src="images/me.jpg" alt="Photo of Tatianna">
+      <p>Hi! I'm Tatianna, a UCSD student into data viz and web development. This site will host my projects and contact info.</p>
+    </section>
 
+    <section class="home-section">
+      <h2>Latest Projects</h2>
+      <div class="projects"></div>
+      <p style="margin-top:.5rem"><a href="projects/">See all projects →</a></p>
+    </section>
 
-  <section class="intro">
-    <img src="images/me.jpg" alt="Photo of Tatianna Sanchez" width="300">
-    <p>
-      Hi! I'm Tatianna, a UCSD student interested in data viz and web development. 
-     This site will host my projects and contact info.</p>
-    </p>
-  </section>
+    <section id="profile-stats" class="home-section"></section>
+  </main>
+
+  <script type="module" src="./global.js"></script>
+  <script type="module" src="./index.js" defer></script>
 </body>
 </html>
