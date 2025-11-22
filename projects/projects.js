@@ -1,23 +1,30 @@
 // projects/projects.js
-import { fetchJSON, renderProjects, updateProjectsCount } from '../global.js';
+import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
-(async () => {
-  try {
-    // load your data (path is from projects/index.html → ../lib/projects.json)
-    const data = await fetchJSON('../lib/projects.json');
+// 1) target the SVG you already placed in projects/index.html
+const svg = d3.select('#projects-pie-plot');
 
-    // render all projects
-    const container = document.querySelector('.projects');
-    if (container) renderProjects(data, container, 'h2');
+// 2) arc generator (radius 50 matches your viewBox)
+const arcGen = d3.arc().innerRadius(0).outerRadius(50);
 
-    // "Projects (N)" in the H1
-    updateProjectsCount(Array.isArray(data) ? data.length : 0);
-  } catch (err) {
-    console.error('projects.js error:', err);
-    const container = document.querySelector('.projects');
-    if (container) {
-      container.innerHTML =
-        `<p style="color:var(--error, #b00020);">Could not load projects (check console & the path <code>../lib/projects.json</code>).</p>`;
-    }
-  }
-})();
+// 3) our toy data: slices for 1 and 2  →  ~33% / 67%
+const data = [1, 2];
+
+// 4) convert values → start/end angles
+const total = d3.sum(data);
+let angle = 0;
+const arcs = data.map(d => {
+  const startAngle = angle;
+  const endAngle   = angle + (d / total) * 2 * Math.PI;
+  angle = endAngle;
+  return { startAngle, endAngle };
+});
+
+// 5) draw the slices
+const colors = ['gold', 'purple']; // per spec
+
+svg.selectAll('path')
+  .data(arcs)
+  .join('path')
+  .attr('d', arcGen)
+  .attr('fill', (d, i) => colors[i]);

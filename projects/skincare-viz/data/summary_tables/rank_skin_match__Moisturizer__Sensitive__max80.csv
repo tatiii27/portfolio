@@ -1,0 +1,28 @@
+brand,num_products,avg_price,avg_rating,avg_actives,overlap_with_skin_topN,coverage_skin_topN,avg_lift_vs_label,num_high_lift(>1.5),avg_distinctiveness,num_distinct(>2x_label),example_overlap,price_per_active
+OLEHENRIKSEN,5,45.0,4.34,6.2,9,0.6,1.105,0,2.168,5,"Phenoxyethanol, Water, Glycerin",7.26
+CLINIQUE,3,35.33,4.13,6.33,9,0.6,0.958,0,1.879,4,"Butylene Glycol, Phenoxyethanol, Water",5.58
+BIOSSANCE,5,54.0,4.5,4.2,8,0.533,1.033,0,2.646,7,"Water, Caprylic/Capric Triglyceride, Glycerin",12.86
+KIEHL'S SINCE 1851,6,36.0,4.33,4.83,8,0.533,0.954,0,1.887,3,"Water, Phenoxyethanol, Glycerin",7.45
+ORIGINS,5,45.6,4.28,7.8,8,0.533,0.902,0,1.907,6,"Butylene Glycol, Glycerin, Sodium Hyaluronate",5.85
+FIRST AID BEAUTY,7,32.86,4.23,5.57,8,0.533,1.036,0,2.289,2,"Glycerin, Water, Phenoxyethanol",5.9
+SMASHBOX,2,37.0,4.0,5.5,8,0.533,0.978,0,2.182,4,"Water, Butylene Glycol, Phenoxyethanol",6.73
+SUNDAY RILEY,4,70.5,4.22,5.5,7,0.467,1.022,0,1.672,1,"Phenoxyethanol, Water, Caprylyl Glycol",12.82
+PHILOSOPHY,4,46.75,4.2,2.75,7,0.467,1.027,0,1.748,5,"Glycerin, Water, Phenoxyethanol",17.0
+IT COSMETICS,5,46.0,4.12,14.4,7,0.467,1.163,1,1.664,3,"Butylene Glycol, Glycerin, Phenoxyethanol",3.19
+LANEIGE,5,33.8,4.48,6.8,6,0.4,1.181,1,2.472,3,"Water, Ethylhexylglycerin, Glycerin",4.97
+KORRES,2,51.0,4.4,6.0,6,0.4,1.051,0,2.029,3,"Water, Glycerin, Phenoxyethanol",8.5
+FARMACY,4,46.25,4.38,5.0,6,0.4,1.232,2,1.822,4,"Glycerin, Water, Caprylic/Capric Triglyceride",9.25
+MURAD,2,61.5,4.3,7.5,6,0.4,1.039,0,1.961,3,"Butylene Glycol, Water, Phenoxyethanol",8.2
+DR. JART+,5,44.0,4.26,5.2,6,0.4,1.238,2,2.699,6,"Butylene Glycol, Glycerin, Water",8.46
+ERBORIAN,2,41.5,4.25,2.5,6,0.4,0.957,0,2.445,5,"Butylene Glycol, Water, Ethylhexylglycerin",16.6
+CAUDALIE,7,44.0,4.24,4.29,6,0.4,1.116,0,2.372,7,"Water, Caprylyl Glycol, Potassium Sorbate",10.27
+DR. DENNIS GROSS SKINCARE,3,69.0,4.17,9.33,6,0.4,1.125,0,1.661,3,"Glycerin, Water, Butylene Glycol",7.39
+LANCÔME,2,51.5,4.4,1.5,5,0.333,0.876,0,1.794,4,"Water, Glycerin, Phenoxyethanol",34.33
+AMOREPACIFIC,2,55.0,4.2,3.0,5,0.333,1.11,1,2.402,6,"Butylene Glycol, Glycerin, Water",18.33
+YOUTH TO THE PEOPLE,3,50.0,4.6,7.67,4,0.267,1.036,0,3.38,5,"Ethylhexylglycerin, Phenoxyethanol, Water",6.52
+TATCHA,3,54.67,4.23,3.67,4,0.267,1.017,0,3.6,5,"Ethylhexylglycerin, Water, Glycerin",14.91
+GLOW RECIPE,2,42.0,4.1,3.0,4,0.267,1.062,0,2.836,2,"Glycerin, Sodium Hyaluronate, Xanthan Gum",14.0
+SATURDAY SKIN,2,44.0,4.6,3.5,3,0.2,1.403,2,3.576,2,"Glycerin, Water, Butylene Glycol",12.57
+JOSIE MARAN,6,38.0,4.25,3.0,3,0.2,1.037,0,1.554,0,"Phenoxyethanol, Butylene Glycol, Caprylyl Glycol",12.67
+HERBIVORE,5,48.2,4.3,4.2,1,0.067,0.947,0,2.577,1,Glycerin,11.48
+GUERLAIN,2,41.5,4.25,0.0,0,0.0,,0,,0,,41.5

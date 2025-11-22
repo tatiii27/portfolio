@@ -1,0 +1,28 @@
+brand,num_products,avg_price,avg_rating,avg_actives,overlap_with_skin_topN,coverage_skin_topN,avg_lift_vs_label,num_high_lift(>1.5),avg_distinctiveness,num_distinct(>2x_label),example_overlap,price_per_active
+BOSCIA,7,26.43,4.2,3.57,4,0.267,1.195,2,3.153,4,"Butylene Glycol, Glycerin, Water",7.4
+CAUDALIE,7,27.0,4.23,2.29,6,0.4,1.148,1,2.548,6,"Water, Caprylyl Glycol, Potassium Sorbate",11.81
+CLARINS,4,30.0,4.55,2.75,11,0.733,1.067,2,1.93,7,"Glycerin, Water, Phenoxyethanol",10.91
+CLINIQUE,10,24.1,4.37,3.7,9,0.6,1.039,0,1.976,6,"Butylene Glycol, Phenoxyethanol, Water",6.51
+DR. JART+,2,35.5,4.45,4.5,6,0.4,1.231,2,2.718,6,"Butylene Glycol, Glycerin, Water",7.89
+DRUNK ELEPHANT,4,27.0,4.42,2.25,7,0.467,1.076,1,2.224,6,"Glycerin, Caprylyl Glycol, Water",12.0
+FARMACY,3,30.67,4.47,3.33,6,0.4,1.222,4,2.067,5,"Glycerin, Water, Caprylic/Capric Triglyceride",9.2
+FIRST AID BEAUTY,4,23.25,4.2,6.5,8,0.533,1.025,1,2.331,5,"Glycerin, Water, Phenoxyethanol",3.58
+FRESH,2,33.5,3.75,3.5,11,0.733,1.114,1,2.434,6,"Water, Glycerin, Butylene Glycol",9.57
+GLAMGLOW,3,24.33,4.13,6.67,9,0.6,0.928,0,1.857,6,"Glycerin, Phenoxyethanol, Water",3.65
+INDIE LEE,2,32.0,4.4,4.0,3,0.2,1.338,2,6.468,3,"Water, Ethylhexylglycerin, Caprylic/Capric Triglyceride",8.0
+IT COSMETICS,2,33.0,4.6,16.0,7,0.467,1.063,1,1.372,2,"Butylene Glycol, Glycerin, Phenoxyethanol",2.06
+KATE SOMERVILLE,3,32.67,4.33,6.67,9,0.6,1.104,1,1.889,4,"Water, Glycerin, Phenoxyethanol",4.9
+KIEHL'S SINCE 1851,9,24.56,4.4,3.89,8,0.533,0.96,0,1.967,6,"Water, Phenoxyethanol, Glycerin",6.31
+KORRES,3,27.33,4.6,3.33,6,0.4,1.037,0,2.183,5,"Water, Glycerin, Phenoxyethanol",8.2
+LANEIGE,4,25.25,4.3,3.0,6,0.4,1.111,1,2.436,3,"Water, Ethylhexylglycerin, Glycerin",8.42
+MURAD,2,34.0,4.35,5.0,6,0.4,0.923,0,1.819,3,"Butylene Glycol, Water, Phenoxyethanol",6.8
+OLEHENRIKSEN,6,25.83,4.43,6.17,9,0.6,1.014,0,1.856,5,"Phenoxyethanol, Water, Glycerin",4.19
+ORIGINS,3,24.0,4.43,3.67,8,0.533,1.021,1,1.909,6,"Butylene Glycol, Glycerin, Sodium Hyaluronate",6.55
+PETER THOMAS ROTH,3,38.67,4.3,5.0,9,0.6,1.014,1,2.037,7,"Water, Butylene Glycol, Glycerin",7.73
+PHILOSOPHY,3,22.0,4.63,7.0,7,0.467,0.971,0,1.531,2,"Glycerin, Water, Phenoxyethanol",3.14
+REN CLEAN SKINCARE,3,32.33,4.3,2.0,5,0.333,1.024,0,1.772,3,"Glycerin, Phenoxyethanol, Tocopherol",16.17
+SATURDAY SKIN,2,27.0,4.55,5.5,3,0.2,1.183,2,3.587,3,"Glycerin, Water, Butylene Glycol",4.91
+SEPHORA COLLECTION,2,7.0,4.15,0.0,8,0.533,1.115,2,3.327,10,"Glycerin, Phenoxyethanol, Butylene Glycol",7.0
+SHISEIDO,4,26.5,4.4,2.5,7,0.467,0.878,0,2.069,5,"Butylene Glycol, Glycerin, Water",10.6
+SUNDAY RILEY,2,36.5,4.3,5.0,7,0.467,1.082,2,1.787,4,"Phenoxyethanol, Water, Caprylyl Glycol",7.3
+TATCHA,2,25.0,4.55,0.0,4,0.267,1.112,1,3.237,3,"Ethylhexylglycerin, Water, Glycerin",25.0

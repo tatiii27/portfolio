@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meta - Code Stats</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css"/>
+    <style>
+
+        #page { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+        #page > header h1 { 
+            font-family: inherit;
+            font-weight: 700;
+            font-size: clamp(2.2rem, 4vw, 3rem); 
+            line-height: 1.1;
+            margin:0 0 0.5rem 0;
+            border-bottom: 4px solid #FF86B6;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+
+
+        .stats{display:grid;grid-template-columns:max-content 1fr;gap:.25rem 1rem;margin:1rem 0}
+        .stats dt{opacity:.7} .stats dd{margin:0}
+
+        #chart{margin-top:1rem; max-width:960px; }
+        #chart svg{width:100%; height:auto; }
+
+        dl.info{
+            display:grid;grid-template-columns:max-content 1fr;gap:.25rem .75rem;
+            margin:0;padding:.75rem .9rem;background:rgba(255,255,255,.9);border-radius:.5rem;
+            box-shadow:0 6px 20px rgba(0,0,0,.12);border:1px solid rgba(0,0,0,.06);
+            transition:opacity .5s, visibility .5s
+        }
+        .tooltip{position:fixed;top:1em;left:1em}
+        #commit-tooltip[hidden] { display: none !important; }
+
+        @keyframes marching-ants{to{stroke-dashoffset:-8}}
+        .skeleton{fill-opacity:.1;stroke:#000;stroke-opacity:.7;stroke-dasharray:5 3;animation:marching-amts 2s linear infinite}
+        
+    </style>
+</head>
+<body>
+    <div id="page">
+        <header>
+            <h1>Meta</h1>
+        </header>
+
+        <h2>Summary stats</h2>
+        <div id="stats"></div>
+
+        <h2>Meta over time</h2>
+
+
+        <div id="evolution-layout">
+
+            <div id="scrolly-1">
+                <div id="scatter-story"></div>
+            </div>
+
+            <div id="scatter-plot">
+                <h2>Commits by time of day</h2>
+                <div id="chart"></div>
+
+                <dl id="commit-tooltip" class="info tooltip" hidden>
+                    <dt>Commit</dt><dd><a href="" id="commit-link" target="_blank" rel="noopener noreferrer"></a></dd>
+                    <dt>Date</dt><dd id="commit-date"></dd>
+                    <dt>Time</dt><dd id="commit-time"></dd>
+                    <dt>Author</dt><dd id="commit-author"></dd>
+                    <dt>Lines edited</dt><dd id="commit-lines"></dd>
+                </dl>
+
+                <p id="selection-count">No commits selected</p>
+                <h3>Language breakdown (selected)</h3>
+                <dl id="language-breakdown" class="stats"></dl>
+            </div>
+        </div>
+
+        <h2>Meta evolution</h2>
+        <div id="code-layout">
+            <div>
+                <dl id="files"></dl>
+            </div>
+
+            <div id="scrolly-2">
+                <div id="file-story"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../global.js"></script>
+    <script type="module" src="./meta.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+brand,num_products,avg_price,avg_rating,avg_actives,overlap_with_skin_topN,coverage_skin_topN,avg_lift_vs_label,num_high_lift(>1.5),avg_distinctiveness,num_distinct(>2x_label),example_overlap,price_per_active
+WANDER BEAUTY,2,25.0,4.45,10.0,1,0.067,1.2,1,4.878,5,Butylene Glycol,2.5
+ERNO LASZLO,2,41.5,4.75,6.0,5,0.333,1.087,1,2.63,4,"Butylene Glycol, Ethylhexylglycerin, Glycerin",6.92
+BAREMINERALS,2,35.0,3.85,5.0,6,0.4,0.935,0,2.35,6,"Butylene Glycol, Glycerin, Tocopherol",7.0
+FIRST AID BEAUTY,6,32.0,3.8,5.67,9,0.6,1.006,0,2.205,3,"Glycerin, Water, Phenoxyethanol",5.65
+LANEIGE,2,35.0,4.1,4.0,6,0.4,1.043,0,2.177,3,"Water, Ethylhexylglycerin, Glycerin",8.75
+TARTE,2,30.0,4.1,7.0,8,0.533,0.97,0,1.944,4,"Water, Phenoxyethanol, Glycerin",4.29
+OLEHENRIKSEN,2,40.0,4.05,3.5,9,0.6,1.047,0,1.881,4,"Phenoxyethanol, Water, Glycerin",11.43
+KIEHL'S SINCE 1851,7,36.0,3.66,4.14,9,0.6,0.939,0,1.829,6,"Water, Phenoxyethanol, Glycerin",8.69
+CLARINS,2,47.5,3.7,2.0,10,0.667,0.937,0,1.82,4,"Glycerin, Water, Phenoxyethanol",23.75
+SHISEIDO,2,51.0,2.15,4.0,7,0.467,0.922,0,1.739,3,"Butylene Glycol, Glycerin, Water",12.75
+PERRICONE MD,2,45.0,3.7,3.0,8,0.533,0.95,0,1.721,5,"Water, Glycerin, Phenoxyethanol",15.0
+KATE SOMERVILLE,2,49.0,3.45,4.0,10,0.667,0.968,0,1.709,4,"Water, Glycerin, Phenoxyethanol",12.25
+PETER THOMAS ROTH,3,51.67,4.07,11.67,9,0.6,0.988,0,1.646,2,"Water, Butylene Glycol, Glycerin",4.43
+CLINIQUE,4,29.0,3.92,5.5,9,0.6,0.902,0,1.529,1,"Butylene Glycol, Phenoxyethanol, Water",5.27
+DR. BRANDT SKINCARE,2,48.5,3.65,6.0,9,0.6,0.925,0,1.443,1,"Phenoxyethanol, Water, Glycerin",8.08
+ORIGINS,2,36.5,4.0,9.5,7,0.467,0.836,0,1.318,1,"Butylene Glycol, Glycerin, Sodium Hyaluronate",3.84

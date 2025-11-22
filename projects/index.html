@@ -3,38 +3,194 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Tatianna Sanchez</title>
+  <link rel="stylesheet" href="../style.css" />
   <script>
     (() => {
       const v = localStorage.colorScheme || "light dark";
       document.documentElement.style.setProperty("color-scheme", v);
     })();
   </script>
-  <title>Projects — Tatianna Sanchez</title>
-  <link rel="stylesheet" href="../style.css" />
+
+  <!-- Small, scoped additions for hover/selection & layout -->
+  <style>
+    .viz-wrap{
+      display:flex; align-items:center; gap:clamp(1rem,3vw,2rem);
+      max-width:var(--page); margin:0 auto 1rem; padding:0 1rem;
+    }
+    #projects-pie-plot{ flex:0 0 auto; max-width:28rem; width:100%; overflow:visible; }
+    .legend{
+      list-style:none; margin:0; padding:.75rem 1rem; flex:1;
+      display:flex; flex-wrap:wrap; align-items:center; gap:.5rem 1rem;
+      border:1px solid var(--border); border-radius:.8rem; background:canvas;
+      box-shadow:0 2px 8px color-mix(in oklch, canvastext 8%, transparent);
+    }
+    .legend li{ display:inline-flex; align-items:center; gap:.5rem; cursor:pointer; }
+    .legend .dot{ inline-size:.75rem; block-size:.75rem; border-radius:50%;
+      box-shadow:0 0 0 2px color-mix(in oklch, canvas 30%, transparent) inset; }
+    .legend li.is-selected .dot{ outline:2px solid color-mix(in oklch, var(--accent) 40%, transparent); }
+    .legend:has(li.is-selected) li:not(.is-selected){ opacity:.55; }
+
+    /* search under the chart (as in the lab) */
+    .projects-search{
+      width:min(720px,100%); margin:.75rem 1rem 1.25rem; padding:.75rem 1rem;
+      border-radius:.6rem; border:2px solid color-mix(in oklch, canvastext 25%, transparent);
+      font:inherit;
+    }
+
+    /* wedge UX */
+    #projects-pie-plot path{ cursor:pointer; transition:opacity 300ms ease; }
+    #projects-pie-plot:has(path:hover) path:not(:hover){ opacity:.5; }
+    #projects-pie-plot path.is-selected{ fill:var(--accent) !important; }
+    #projects-pie-plot:has(path.is-selected) path:not(.is-selected){ opacity:.25; }
+
+    @media (max-width:760px){
+      .viz-wrap{ flex-direction:column; align-items:flex-start; }
+      #projects-pie-plot{ max-width:22rem; }
+    }
+  </style>
 </head>
 <body class="projects-page">
+  <!-- site nav / theme switcher -->
   <script type="module" src="../global.js"></script>
 
   <main>
     <h1 class="projects-title">Projects</h1>
+
+    <!-- Pie + Legend -->
+    <section class="viz-wrap center" aria-label="Projects summary">
+      <svg id="projects-pie-plot" viewBox="-50 -50 100 100" role="img" aria-labelledby="pie-title pie-desc">
+        <title id="pie-title">Projects by year</title>
+        <desc id="pie-desc">Interactive pie chart of project counts per year with a legend.</desc>
+      </svg>
+      <ul class="legend" id="projects-legend" aria-label="Legend"></ul>
+    </section>
+
+    <!-- Search placed under the chart -->
+    <input class="projects-search" type="search" aria-label="Search projects"
+           placeholder="🔎  Search projects…" />
+
+    <!-- Cards grid -->
     <section class="projects-section">
       <div class="projects"></div>
     </section>
   </main>
 
+  <!-- D3 UMD -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+
+  <!-- Page logic -->
   <script type="module">
     import { fetchJSON, renderProjects, updateProjectsCount } from '../global.js';
+
+    // ---------- Elements ----------
+    const svg      = d3.select('#projects-pie-plot');
+    const legendUl = d3.select('#projects-legend');
+    const cardsEl  = document.querySelector('.projects');
+    const searchEl = document.querySelector('.projects-search');
+
+    // ---------- Global state (single source of truth) ----------
+    let ALL = [];               // full dataset
+    let searchQuery   = "";     // current search text
+    let selectedYear  = null;   // e.g. "2025" or null
+
+    // ---------- Boot ----------
     (async () => {
-      const container = document.querySelector('.projects');
       try{
-        const data = await fetchJSON('../lib/projects.json');  // relative to /projects/
-        renderProjects(data, container, 'h2');
-        updateProjectsCount(Array.isArray(data) ? data.length : 0, '.projects-title');
+        ALL = await fetchJSON('../lib/projects.json');
+        render();               // single entry point: computes filtered + draws everything
       }catch(err){
         console.error(err);
-        container.innerHTML = `<p class="msg-error">Could not load projects (check console & the path <code>../lib/projects.json</code>).</p>`;
+        cardsEl.innerHTML = `<p class="msg-error">Could not load projects (check <code>../lib/projects.json</code>).</p>`;
       }
     })();
+
+    // ---------- Events ----------
+    searchEl.addEventListener('input', (e) => {
+      searchQuery = (e.target.value || '').trim().toLowerCase();
+      render();
+    });
+
+    // ---------- Helpers ----------
+    function getYear(p){
+      return String(p.year ?? p.Year ?? p.date ?? 'Unknown');
+    }
+
+    function applyFilters(list){
+      // 1) search
+      const afterSearch = !searchQuery ? list : list.filter(p => {
+        const values = Object.values(p).join(' ').toLowerCase();
+        return values.includes(searchQuery);
+      });
+      // 2) year selection (if any)
+      return !selectedYear ? afterSearch : afterSearch.filter(p => getYear(p) === selectedYear);
+    }
+
+    // Roll up visible projects to year counts for the pie
+    function rollupYears(visible){
+      const rolled = d3.rollups(
+        visible,
+        v => v.length,
+        d => getYear(d)
+      );
+      return rolled
+        .map(([label, value]) => ({ label, value }))
+        .sort((a,b) => d3.ascending(a.label, b.label));
+    }
+
+    // ---------- Render (cards + pie + legend) ----------
+    function render(){
+      const visible = applyFilters(ALL);
+      updateProjectsCount(visible.length, '.projects-title');
+      renderProjects(visible, cardsEl, 'h2');
+
+      // draw viz from visible set
+      renderPieAndLegend(rollupYears(visible));
+    }
+
+    function renderPieAndLegend(data){
+      // clear
+      svg.selectAll('*').remove();
+      legendUl.selectAll('*').remove();
+
+      if (!data.length) return;
+
+      const color = d3.scaleOrdinal(d3.schemeTableau10).domain(data.map(d => d.label));
+      const pie   = d3.pie().value(d => d.value).sort(null);
+      const arc   = d3.arc().innerRadius(0).outerRadius(50);
+
+      // slices
+      const slices = svg.append('g')
+        .selectAll('path')
+        .data(pie(data), d => d.data.label)
+        .join('path')
+          .attr('d', arc)
+          .attr('fill', d => color(d.data.label))
+          .attr('stroke', 'white')
+          .attr('stroke-width', 0.8)
+          .classed('is-selected', d => selectedYear === d.data.label)
+          .on('click', (event, d) => {
+            // toggle year; do NOT wipe search — both filters must compose
+            selectedYear = (selectedYear === d.data.label ? null : d.data.label);
+            render(); // re-derive visible projects with updated state
+          });
+
+      slices.append('title').text(d => `${d.data.label}: ${d.data.value}`);
+
+      // legend
+      const items = legendUl.selectAll('li')
+        .data(data, d => d.label)
+        .join('li')
+          .classed('is-selected', d => selectedYear === d.label)
+          .on('click', (event, d) => {
+            selectedYear = (selectedYear === d.label ? null : d.label);
+            render();
+          });
+
+      items.append('span').attr('class','dot').style('background', d => color(d.label));
+      items.append('span').attr('class','name').text(d => d.label);
+      items.append('span').attr('class','count').text(d => `(${d.value})`);
+    }
   </script>
 </body>
 </html>

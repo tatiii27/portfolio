@@ -1,17 +1,17 @@
 [
   {
     "title": "Project 2: Persuasive or Deceptive Visualization?",
-    "year": "2024",
+    "year": "2025",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Analysis of how design choices can persuade or mislead when showing US crime trends.",
-    "href": "./project2/index.html"
+    "href": "projects/project2/index.html"
   },
   {
     "title": "Skincare Visualization (D3)",
     "year": "2025",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Best product per category — price vs. rating + brand leaderboard.",
-    "href": "./skincare-viz/index.html"
+    "href": "projects/skincare-viz/index.html"
   },
   {
     "title": "Lorem ipsum dolor sit.",

@@ -1,0 +1,15 @@
+brand,num_products,avg_price,avg_rating,avg_actives,overlap_with_skin_topN,coverage_skin_topN,avg_lift_vs_label,num_high_lift(>1.5),avg_distinctiveness,num_distinct(>2x_label),example_overlap,price_per_active
+MDSOLARSCIENCES,4,26.75,4.22,2.25,1,0.067,0.663,0,3.584,3,Dimethicone,11.89
+MOROCCANOIL,5,32.4,3.58,3.6,6,0.4,1.022,0,3.014,7,"Glycerin, Tocopherol, Tocopheryl Acetate",9.0
+AMOREPACIFIC,3,55.67,3.83,2.0,5,0.333,1.114,0,2.477,3,"Butylene Glycol, Glycerin, Water",27.83
+FIRST AID BEAUTY,2,32.0,3.85,8.0,8,0.533,1.123,0,2.393,2,"Glycerin, Water, Phenoxyethanol",4.0
+DRUNK ELEPHANT,2,35.0,3.45,5.0,7,0.467,1.096,0,2.161,4,"Glycerin, Caprylyl Glycol, Water",7.0
+SHISEIDO,4,32.0,4.28,1.75,7,0.467,1.026,0,2.116,4,"Butylene Glycol, Glycerin, Water",18.29
+PETER THOMAS ROTH,2,34.0,4.0,3.0,9,0.6,1.187,0,2.01,3,"Water, Butylene Glycol, Glycerin",11.33
+TARTE,3,32.0,3.97,4.33,8,0.533,1.06,0,1.963,4,"Water, Phenoxyethanol, Glycerin",7.38
+COOLA,13,35.38,4.32,2.85,2,0.133,0.927,0,1.951,1,"Water, Caprylyl Glycol",12.43
+KIEHL'S SINCE 1851,3,55.33,3.87,3.0,8,0.533,1.019,0,1.866,3,"Water, Phenoxyethanol, Glycerin",18.44
+SUPERGOOP!,12,29.42,4.15,3.92,7,0.467,1.031,0,1.839,5,"Glycerin, Caprylic/Capric Triglyceride, Caprylyl Glycol",7.51
+CLINIQUE,4,25.25,3.92,2.0,9,0.6,0.972,0,1.831,4,"Butylene Glycol, Phenoxyethanol, Water",12.62
+KORRES,2,30.5,4.25,6.0,6,0.4,0.995,0,1.785,3,"Water, Glycerin, Phenoxyethanol",5.08
+PHILOSOPHY,2,57.0,3.9,6.5,7,0.467,1.05,0,1.632,3,"Glycerin, Water, Phenoxyethanol",8.77

@@ -1,0 +1,29 @@
+brand,num_products,avg_price,avg_rating,avg_actives,overlap_with_skin_topN,coverage_skin_topN,avg_lift_vs_label,num_high_lift(>1.5),avg_distinctiveness,num_distinct(>2x_label),example_overlap,price_per_active
+WANDER BEAUTY,2,25.0,4.45,10.0,1,0.067,1.226,1,4.878,5,Butylene Glycol,2.5
+ERNO LASZLO,2,41.5,4.75,6.0,5,0.333,1.088,1,2.63,4,"Butylene Glycol, Ethylhexylglycerin, Glycerin",6.92
+AMOREPACIFIC,2,90.0,4.1,6.5,5,0.333,1.053,0,2.319,6,"Butylene Glycol, Glycerin, Water",13.85
+LANEIGE,2,35.0,4.1,4.0,6,0.4,1.049,0,2.177,3,"Water, Ethylhexylglycerin, Glycerin",8.75
+DR. DENNIS GROSS SKINCARE,4,62.75,3.65,9.0,6,0.4,1.046,0,1.665,4,"Glycerin, Water, Butylene Glycol",6.97
+OLEHENRIKSEN,2,40.0,4.05,3.5,9,0.6,1.034,0,1.881,4,"Phenoxyethanol, Water, Glycerin",11.43
+DRUNK ELEPHANT,2,62.0,1.95,9.5,7,0.467,1.033,0,2.147,7,"Glycerin, Caprylyl Glycol, Water",6.53
+ALGENIST,3,71.67,3.77,5.67,9,0.6,1.012,0,1.867,4,"Glycerin, Water, Caprylyl Glycol",12.65
+BELIF,2,53.0,4.45,7.0,5,0.333,1.011,1,2.522,4,"Water, Glycerin, Butylene Glycol",7.57
+FIRST AID BEAUTY,6,32.0,3.8,5.67,8,0.533,1.006,0,2.205,3,"Glycerin, Water, Phenoxyethanol",5.65
+MURAD,2,76.5,4.2,7.0,6,0.4,1.0,0,1.93,3,"Butylene Glycol, Water, Phenoxyethanol",10.93
+FRESH,2,58.0,3.9,7.5,11,0.733,0.994,0,1.901,5,"Water, Glycerin, Butylene Glycol",7.73
+KORRES,2,60.5,4.1,7.0,6,0.4,0.989,0,2.035,5,"Water, Glycerin, Phenoxyethanol",8.64
+CAUDALIE,3,66.67,3.67,3.33,6,0.4,0.981,0,2.094,4,"Water, Caprylyl Glycol, Potassium Sorbate",20.0
+PETER THOMAS ROTH,5,59.0,4.12,9.6,9,0.6,0.978,0,1.646,2,"Water, Butylene Glycol, Glycerin",6.15
+TARTE,2,30.0,4.1,7.0,8,0.533,0.964,0,1.944,4,"Water, Phenoxyethanol, Glycerin",4.29
+PERRICONE MD,5,61.8,3.92,3.8,8,0.533,0.964,0,1.721,5,"Water, Glycerin, Phenoxyethanol",16.26
+KATE SOMERVILLE,3,61.0,3.53,5.33,9,0.6,0.949,0,1.709,4,"Water, Glycerin, Phenoxyethanol",11.44
+BAREMINERALS,2,35.0,3.85,5.0,6,0.4,0.941,0,2.35,6,"Butylene Glycol, Glycerin, Tocopherol",7.0
+CLARINS,4,61.25,3.75,3.75,11,0.733,0.938,0,1.82,4,"Glycerin, Water, Phenoxyethanol",16.33
+PHILOSOPHY,5,58.8,3.6,6.6,7,0.467,0.935,0,1.853,6,"Glycerin, Water, Phenoxyethanol",8.91
+LANCÔME,5,63.0,3.8,6.0,5,0.333,0.934,0,1.739,2,"Water, Glycerin, Phenoxyethanol",10.5
+DR. BRANDT SKINCARE,3,59.67,3.83,7.33,9,0.6,0.93,0,1.443,1,"Phenoxyethanol, Water, Glycerin",8.14
+SHISEIDO,5,61.2,3.28,4.4,7,0.467,0.925,0,1.739,3,"Butylene Glycol, Glycerin, Water",13.91
+KIEHL'S SINCE 1851,7,36.0,3.66,4.14,8,0.533,0.914,0,1.829,6,"Water, Phenoxyethanol, Glycerin",8.69
+CLINIQUE,4,29.0,3.92,5.5,9,0.6,0.897,0,1.529,1,"Butylene Glycol, Phenoxyethanol, Water",5.27
+ESTÉE LAUDER,4,59.25,3.7,7.5,7,0.467,0.861,0,1.869,4,"Butylene Glycol, Phenoxyethanol, Sodium Hyaluronate",7.9
+ORIGINS,2,36.5,4.0,9.5,8,0.533,0.836,0,1.318,1,"Butylene Glycol, Glycerin, Sodium Hyaluronate",3.84

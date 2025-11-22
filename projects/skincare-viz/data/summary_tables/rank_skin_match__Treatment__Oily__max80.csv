@@ -1,0 +1,24 @@
+brand,num_products,avg_price,avg_rating,avg_actives,overlap_with_skin_topN,coverage_skin_topN,avg_lift_vs_label,num_high_lift(>1.5),avg_distinctiveness,num_distinct(>2x_label),example_overlap,price_per_active
+ALGENIST,2,56.0,4.25,5.0,10,0.667,0.922,0,1.724,3,"Glycerin, Water, Caprylyl Glycol",11.2
+KATE SOMERVILLE,4,42.75,4.22,3.75,10,0.667,0.963,0,1.619,4,"Water, Glycerin, Phenoxyethanol",11.4
+FIRST AID BEAUTY,4,39.5,4.35,8.25,9,0.6,0.915,0,1.966,1,"Glycerin, Water, Phenoxyethanol",4.79
+OLEHENRIKSEN,4,50.25,4.32,7.0,9,0.6,1.004,0,1.8,3,"Phenoxyethanol, Water, Glycerin",7.18
+PETER THOMAS ROTH,8,46.38,4.31,4.0,9,0.6,0.968,0,1.582,3,"Water, Butylene Glycol, Glycerin",11.59
+DR. BRANDT SKINCARE,4,67.0,4.1,4.75,9,0.6,0.988,0,1.555,4,"Phenoxyethanol, Water, Glycerin",14.11
+GLAMGLOW,2,59.0,4.1,6.0,9,0.6,1.002,0,1.992,6,"Glycerin, Phenoxyethanol, Water",9.83
+KIEHL'S SINCE 1851,5,45.0,4.1,3.6,9,0.6,0.995,0,1.964,4,"Water, Phenoxyethanol, Glycerin",12.5
+CLINIQUE,4,46.5,3.82,5.75,9,0.6,0.965,0,1.868,3,"Butylene Glycol, Phenoxyethanol, Water",8.09
+PERRICONE MD,2,64.5,4.4,4.0,8,0.533,0.885,0,1.46,2,"Water, Glycerin, Phenoxyethanol",16.12
+DRUNK ELEPHANT,5,43.8,4.2,6.6,8,0.533,0.972,0,1.922,5,"Glycerin, Caprylyl Glycol, Water",6.64
+MURAD,9,48.11,4.12,6.0,7,0.467,0.952,0,1.946,3,"Butylene Glycol, Water, Phenoxyethanol",8.02
+ORIGINS,5,45.4,4.04,6.4,7,0.467,0.918,0,1.728,4,"Butylene Glycol, Glycerin, Sodium Hyaluronate",7.09
+IT COSMETICS,3,41.33,3.87,16.67,7,0.467,1.042,0,1.47,2,"Butylene Glycol, Glycerin, Phenoxyethanol",2.48
+DR. DENNIS GROSS SKINCARE,3,67.0,4.47,1.33,6,0.4,0.93,0,1.733,3,"Glycerin, Water, Butylene Glycol",50.25
+KORRES,2,75.0,4.35,8.0,6,0.4,0.911,0,1.992,6,"Water, Glycerin, Phenoxyethanol",9.38
+DR. JART+,3,44.67,4.23,7.0,6,0.4,1.02,0,1.691,3,"Butylene Glycol, Glycerin, Water",6.38
+CAUDALIE,6,50.0,4.18,3.67,6,0.4,0.965,0,1.94,3,"Water, Caprylyl Glycol, Potassium Sorbate",13.64
+REN CLEAN SKINCARE,4,50.25,4.22,1.25,5,0.333,0.958,0,1.528,2,"Glycerin, Phenoxyethanol, Tocopherol",40.2
+BECCA,2,38.0,3.9,1.5,5,0.333,0.976,0,3.52,6,"Water, Butylene Glycol, Glycerin",25.33
+MOON JUICE,2,48.5,4.7,6.5,4,0.267,1.069,0,5.736,6,"Citric Acid, Glycerin, Tocopherol",7.46
+PEACE OUT,2,19.0,4.25,1.5,2,0.133,1.077,0,7.253,6,"Butylene Glycol, Glycerin",12.67
+HERBIVORE,2,55.0,4.4,3.0,1,0.067,1.056,0,1.295,0,Glycerin,18.33

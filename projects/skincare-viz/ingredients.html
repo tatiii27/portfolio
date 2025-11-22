@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingredient Analysis - By Label & Skin Type</title>
+    <style>
+        :root {--accent:#ff77b7;}
+        body {font: 14px/1.5rem system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 24px; color:#111;}
+        h1{ font-size: 1.5rem; margin: 0 0 8px; }
+        h2{ font-size: 1.25rem; margin: 24px 0 8px; }
+        .card{ border: 1px solid #eee; border-radius: 14px; padding: 16px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,.04); margin-bottom: 20px; }
+        label{ margin-right: 8px; }
+        .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
+        select, input[type="number"], button {
+        padding: 8px 10px; border-radius: 10px; border: 1px solid #ddd; background: #fff;
+        }
+        button { border-color: var(--accent); color: #7a0440; cursor: pointer; }
+        button:hover { background: #fff3f8; }
+        table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+        th, td { border-bottom: 1px solid #eee; padding: 8px 10px; text-align: left; }
+        th { position: sticky; top: 0; background: #fafafa; }
+        .muted { color: #666; }
+        footer { margin-top: 28px; color: #666; }
+        .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    </style>
+</head>
+<body>
+    <h1>Ingredient Analysis - By Label & Skin Type</h1>
+    <p class="muted">Top common ingredients by <span class="mono">Label</span> and over-representation by <span class="mono">Skin Type</span>. Parentheses are preserved (e.g., <em>Water (Aqua/Eau)</em>).</p>
+
+    <div class="card">
+        <h2>Top Ingredients — by Label</h2>
+        <div class="row">
+            <label>Label:</label>
+            <select id="labelSelect"></select>
+            <label>Top N:</label>
+            <input id="labelTopN" type="number" min="5" max="200" value="30" />
+            <button id="downloadByLabel">Download tall CSV</button>
+        </div>
+        <div id="labelTable"></div>
+    </div>
+
+    <div class="card">
+        <h2>Over-Represented Ingredients — by Skin Type (Lift)</h2>
+        <div class="row">
+            <label>Skin Type:</label>
+            <select id="skinSelect"></select>
+            <label>Top N:</label>
+            <input id="skinTopN" type="number" min="5" max="200" value="30" />
+            <button id="downloadBySkin">Download tall CSV</button>
+        </div>
+        <div id="skinTable"></div>
+    </div>
+
+    <footer class="muted">Tip: change <span class="mono">CSV_URL</span> in the script if your file has a different name/path.</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script type="module">
+    // ================= CONFIG =================
+        const CSV_URL   = './data/cosmetic_p.csv';            // <-- change if needed
+        const CAT_COL   = 'Label';
+        const ING_COL   = 'ingredients';
+        const SKIN_COLS = ['Combination','Dry','Normal','Oily','Sensitive']; // adjust if needed
+        const LIFT_MIN_SUPPORT = 1;  // you can raise to 10/20 to suppress rare stuff
+
+    // ================= HELPERS =================
+        function cleanKeepParens(s){
+            return String(s ?? '').trim().replace(/\s*\/\s*/g,'/').replace(/\s+/g,' ');
+        }
+        function countArray(arr){
+            const m = new Map();
+            for (const x of arr) m.set(x, (m.get(x)||0)+1);
+            return Array.from(m, ([ingredient,count]) => ({ingredient,count}))
+            .sort((a,b)=>d3.descending(a.count,b.count));
+        }
+        function renderTable(container, rows, columns){
+            const root = d3.select(container);
+            root.selectAll('*').remove();
+            const table = root.append('table');
+            const thead = table.append('thead').append('tr');
+            columns.forEach(c => thead.append('th').text(c.label));
+            const tbody = table.append('tbody');
+            const tr = tbody.selectAll('tr').data(rows).join('tr');
+            columns.forEach(c => {
+                tr.append('td').text(d => c.fmt ? c.fmt(d[c.key], d) : d[c.key]);
+            });
+        }
+        function downloadCSV(filename, rows){
+            if (!rows.length) return;
+            const cols = Object.keys(rows[0]);
+            const esc = v => `"${String(v ?? '').replace(/"/g,'""')}"`;
+            const csv = [cols.join(','), ...rows.map(r => cols.map(c=>esc(r[c])).join(','))].join('\n');
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv;charset=utf-8;'}));
+            a.download = filename; a.click();
+            URL.revokeObjectURL(a.href);
+        }
+            // ================= LOAD =================
+            const data = await d3.csv(CSV_URL, d3.autoType);
+            const products = data.filter(d => d[CAT_COL] != null);
+
+            // explode ingredients
+            for (const d of products){
+                d.__ings = String(d[ING_COL] ?? '')
+                .split(',')
+                .map(cleanKeepParens)
+                .filter(x => x.length);
+            }
+
+            // -------- 1) Top by Label (counts & share) --------
+            const rowsByLabel = [];
+            for (const [label, group] of d3.group(products, d => d[CAT_COL])) {
+                const counts = countArray(group.flatMap(d => d.__ings));
+                const totalMentions = d3.sum(counts, d => d.count);
+                for (const {ingredient, count} of counts){
+                    rowsByLabel.push({label, ingredient, count, share: count/totalMentions});
+                }
+            }
+    
+            rowsByLabel.sort((a,b)=> d3.ascending(a.label,b.label) || d3.descending(a.count,b.count));
+
+            // Build label dropdown
+            const labels = Array.from(new Set(rowsByLabel.map(d => d.label)));
+            const labelSelect = d3.select('#labelSelect');
+            labelSelect.selectAll('option').data(labels).join('option')
+                .attr('value', d => d).text(d => d);
+
+            function updateLabelTable(){
+                const lab = labelSelect.property('value');
+                const topN = +document.getElementById('labelTopN').value || 30;
+                const rows = rowsByLabel.filter(d => d.label === lab).slice(0, topN);
+                renderTable('#labelTable', rows, [
+                    {key:'ingredient', label:'Ingredient'},
+                    {key:'count',      label:'Count'},
+                    {key:'share',      label:'Share', fmt: v => (v*100).toFixed(2) + '%'}
+                ]);
+            }
+            labelSelect.on('change', updateLabelTable);
+            document.getElementById('labelTopN').addEventListener('input', updateLabelTable);
+            document.getElementById('downloadByLabel').addEventListener('click', () => {
+                downloadCSV('top_ingredients_by_label_tall.csv', rowsByLabel);
+            });
+
+            // initialize with first label
+            if (labels.length) { labelSelect.property('value', labels[0]); updateLabelTable(); }
+
+            // -------- 2) Skin-Type Lift --------
+            const overallCounts = countArray(products.flatMap(d => d.__ings));
+            const totalOverall = d3.sum(overallCounts, d => d.count);
+            const pOverall = new Map(overallCounts.map(d => [d.ingredient, d.count/totalOverall]));
+
+            const liftTall = [];  // for CSV
+            const liftMap = new Map(); // skin -> rows
+
+            for (const skin of SKIN_COLS){
+                const subset = products.filter(d => +d[skin] === 1);
+                if (!subset.length) continue;
+
+                const counts = countArray(subset.flatMap(d => d.__ings));
+                const total = d3.sum(counts, d => d.count);
+
+                const rows = counts.map(({ingredient, count}) => {
+                    const p_skin = count / total;
+                    const p_overall = pOverall.get(ingredient) ?? 0;
+                    const lift = p_overall > 0 ? (p_skin / p_overall) : NaN;
+                    return {skin, ingredient, support_skin: count, p_skin, p_overall, lift};
+                })
+                .filter(r => r.support_skin >= LIFT_MIN_SUPPORT)
+                .sort((a,b)=> d3.descending(a.lift,b.lift));
+
+                liftMap.set(skin, rows);
+                liftTall.push(...rows);
+            }
+
+            // Build skin dropdown
+            const skinSelect = d3.select('#skinSelect');
+            const skinOpts = Array.from(liftMap.keys());
+            skinSelect.selectAll('option').data(skinOpts).join('option')
+                .attr('value', d => d).text(d => d);
+
+            function updateSkinTable(){
+                const skin = skinSelect.property('value');
+                const topN = +document.getElementById('skinTopN').value || 30;
+                const rows = (liftMap.get(skin) || []).slice(0, topN);
+                renderTable('#skinTable', rows, [
+                    {key:'ingredient',     label:'Ingredient'},
+                    {key:'support_skin',   label:'Mentions (skin subset)'},
+                    {key:'p_skin',         label:'P(ing | skin)', fmt: v => (v*100).toFixed(2)+'%'},
+                    {key:'p_overall',      label:'P(ing overall)', fmt: v => (v*100).toFixed(2)+'%'},
+                    {key:'lift',           label:'Lift', fmt: v => (v ?? NaN).toFixed(2)}
+                ]);
+            }
+            skinSelect.on('change', updateSkinTable);
+            document.getElementById('skinTopN').addEventListener('input', updateSkinTable);
+            document.getElementById('downloadBySkin').addEventListener('click', () => {
+                downloadCSV('ingredient_lift_by_skin_tall.csv', liftTall);
+            });
+
+            // initialize with first skin
+            if (skinOpts.length) { skinSelect.property('value', skinOpts[0]); updateSkinTable(); }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+brand,num_products,avg_price,avg_rating,avg_actives,overlap_with_skin_topN,coverage_skin_topN,avg_lift_vs_label,num_high_lift(>1.5),avg_distinctiveness,num_distinct(>2x_label),example_overlap,price_per_active
+BAREMINERALS,2,35.0,3.85,5.0,6,0.4,0.956,0,2.35,6,"Butylene Glycol, Glycerin, Tocopherol",7.0
+CLINIQUE,4,29.0,3.92,5.5,9,0.6,0.892,0,1.529,1,"Butylene Glycol, Phenoxyethanol, Water",5.27
+FIRST AID BEAUTY,6,32.0,3.8,5.67,8,0.533,1.002,0,2.205,3,"Glycerin, Water, Phenoxyethanol",5.65
+KIEHL'S SINCE 1851,5,33.0,3.72,4.0,8,0.533,0.917,0,1.829,6,"Water, Phenoxyethanol, Glycerin",8.25
+LANEIGE,2,35.0,4.1,4.0,6,0.4,1.049,1,2.177,3,"Water, Ethylhexylglycerin, Glycerin",8.75
+TARTE,2,30.0,4.1,7.0,8,0.533,0.965,0,1.944,4,"Water, Phenoxyethanol, Glycerin",4.29
+WANDER BEAUTY,2,25.0,4.45,10.0,1,0.067,1.24,2,4.878,5,Butylene Glycol,2.5

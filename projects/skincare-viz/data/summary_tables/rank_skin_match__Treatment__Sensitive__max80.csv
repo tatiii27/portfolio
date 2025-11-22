@@ -1,0 +1,19 @@
+brand,num_products,avg_price,avg_rating,avg_actives,overlap_with_skin_topN,coverage_skin_topN,avg_lift_vs_label,num_high_lift(>1.5),avg_distinctiveness,num_distinct(>2x_label),example_overlap,price_per_active
+OLEHENRIKSEN,3,47.67,4.3,6.67,9,0.6,0.987,0,1.8,3,"Phenoxyethanol, Water, Glycerin",7.15
+ALGENIST,2,56.0,4.25,5.0,9,0.6,0.905,0,1.724,3,"Glycerin, Water, Caprylyl Glycol",11.2
+PETER THOMAS ROTH,6,47.33,4.25,3.33,9,0.6,0.951,0,1.582,3,"Water, Butylene Glycol, Glycerin",14.2
+KATE SOMERVILLE,2,51.5,4.1,5.5,9,0.6,0.935,0,1.619,4,"Water, Glycerin, Phenoxyethanol",9.36
+CLINIQUE,3,53.0,3.7,7.67,9,0.6,0.92,0,1.868,3,"Butylene Glycol, Phenoxyethanol, Water",6.91
+PERRICONE MD,2,64.5,4.4,4.0,8,0.533,0.895,0,1.46,2,"Water, Glycerin, Phenoxyethanol",16.12
+FIRST AID BEAUTY,4,39.5,4.35,8.25,8,0.533,0.908,0,1.966,1,"Glycerin, Water, Phenoxyethanol",4.79
+KIEHL'S SINCE 1851,3,48.33,4.1,4.0,8,0.533,0.961,0,1.964,4,"Water, Phenoxyethanol, Glycerin",12.08
+ORIGINS,4,41.75,4.08,6.5,8,0.533,0.885,0,1.728,4,"Butylene Glycol, Glycerin, Sodium Hyaluronate",6.42
+DRUNK ELEPHANT,2,25.5,4.1,7.5,7,0.467,0.944,0,1.922,5,"Glycerin, Caprylyl Glycol, Water",3.4
+IT COSMETICS,3,41.33,3.87,16.67,7,0.467,1.038,0,1.47,2,"Butylene Glycol, Glycerin, Phenoxyethanol",2.48
+DR. DENNIS GROSS SKINCARE,2,68.5,4.45,2.0,6,0.4,0.946,0,1.733,3,"Glycerin, Water, Butylene Glycol",34.25
+KORRES,2,75.0,4.35,8.0,6,0.4,0.909,0,1.992,6,"Water, Glycerin, Phenoxyethanol",9.38
+CAUDALIE,7,49.86,4.23,3.57,6,0.4,0.949,0,1.94,3,"Water, Caprylyl Glycol, Potassium Sorbate",13.96
+DR. JART+,3,44.67,4.23,7.0,6,0.4,1.014,0,1.691,3,"Butylene Glycol, Glycerin, Water",6.38
+REN CLEAN SKINCARE,4,50.25,4.22,1.25,5,0.333,0.926,0,1.528,2,"Glycerin, Phenoxyethanol, Tocopherol",40.2
+MOON JUICE,2,48.5,4.7,6.5,4,0.267,1.056,0,5.736,6,"Citric Acid, Glycerin, Tocopherol",7.46
+PEACE OUT,2,19.0,4.25,1.5,3,0.2,1.058,0,7.253,6,"Butylene Glycol, Carbomer, Glycerin",12.67

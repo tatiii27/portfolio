@@ -20,20 +20,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const wtip       = d3.select("#wTip");
   const winnerPick = document.querySelector("#winnerPick");
 
+  // bubble chart
+  const catSel = document.querySelector("#catInput");
+  const bsvg = d3.select("#brandBubbles");
+  const btip = d3.select("#bubbleTip");
+
   let DATA = [];
+  let CATEGORIES = [];
 
 
   d3.csv(CSV_PATH, d3.autoType).then(rows => {
     rows.forEach(d => {
       if (d.Label && !d.category) d.category = d.Label; 
       if (typeof d.skin_type === "string") d.skin_type = d.skin_type.toLowerCase().trim();
-      d.rank  = +d.rank;
+      if (typeof d.Label === "string") d.Label = d.Label.trim();
+      if (typeof d.brand === "string") d.brand = d.brand.trim();
+      if (typeof d.name === "string") d.name = d.name.trim();
+      d.rank  = Number(d.rank);
       d.price = Number.isFinite(+d.price) ? +d.price : undefined;
     });
 
 
-    DATA = rows.filter(d => d.Label && d.brand && d.name && Number.isFinite(d.rank));
-
+    DATA = rows.filter(d => d.Label && d.brand && d.name && SKINS.includes(d.skin_type) && Number.isFinite(d.rank) && d.rank > 0 && d.rank <=5);
+    CATEGORIES = Array.from(new Set(DATA.map(d => d.Label))).sort((a,b)=>d3.ascending(a,b));
 
     if (skinSel && !SKINS.includes((skinSel.value||"").toLowerCase())) skinSel.value = "oily";
 
@@ -44,6 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!wsvg.empty()) {
       renderWinners(); 
     }
+
+    initBubbleChart();
+
   }).catch(err => console.error("CSV load error:", err));
 
 
@@ -233,7 +245,154 @@ function renderWinners() {
     .attr("dominant-baseline", "middle")
     .style("font-size", "12px")
     .text(d => d.label);
+
+    // =============== BRAND BUBBLE CHART (skin + category toggles) ===============
+  function initBubbleChart() {
+    const catSel = document.querySelector("#catInput");
+    const bsvg   = d3.select("#brandBubbles");
+    const btip   = d3.select("#bubbleTip");
+
+    if (!catSel || bsvg.empty()) return;  // skip if section isn’t on the page
+
+  // Build the category (Label) list once from DATA
+  const labels = Array.from(new Set(
+    DATA.filter(d => d.Label).map(d => d.Label.trim())
+  )).sort((a,b) => d3.ascending(a, b));
+
+  // Populate the category dropdown (All + labels)
+  catSel.innerHTML = "";
+  const allOpt = document.createElement("option");
+  allOpt.value = "__all__";
+  allOpt.textContent = "All";
+  catSel.appendChild(allOpt);
+  labels.forEach(L => {
+    const o = document.createElement("option");
+    o.value = L;
+    o.textContent = L;
+    catSel.appendChild(o);
+  });
+
+  // Draw once, then re-render on changes to BOTH toggles
+  renderBubbles();
+  catSel.addEventListener("change", renderBubbles);
+  if (skinSel) {
+    ["input", "change"].forEach(ev => skinSel.addEventListener(ev, renderBubbles));
+  }
+
+  function renderBubbles() {
+    const W = +bsvg.attr("width")  || 900;
+    const H = +bsvg.attr("height") || 520;
+
+    const skin = (skinSel?.value || "oily").toLowerCase();
+    const cat  = catSel.value || "__all__";
+
+    // Filter rows by skin + (optional) category
+    let subset = DATA.filter(d =>
+      d.skin_type === skin &&
+      Number.isFinite(d.rank) &&
+      d.rank > 0 && d.rank <= 5
+    );
+    if (cat && cat !== "__all__") {
+      subset = subset.filter(d => d.Label === cat);
+    }
+
+    // Group by brand → node per brand
+    const nodes = Array.from(
+      d3.group(subset, d => d.brand),
+      ([brand, arr]) => ({
+        brand,
+        count: arr.length,
+        avg: d3.mean(arr, d => d.rank),
+        top3: arr.slice().sort((a,b) => d3.descending(a.rank, b.rank)).slice(0,3)
+      })
+    )
+    .filter(d => d.brand && Number.isFinite(d.avg));
+
+    // If no data, clear and show a note
+    bsvg.selectAll("*").remove();
+    if (nodes.length === 0) {
+      bsvg.append("text")
+          .attr("x", 20)
+          .attr("y", 30)
+          .attr("class", "caption")
+          .text(`No brands found for ${skin}${cat==="__all__" ? "" : ` · ${cat}`}.`);
+      return;
+    }
+
+    // Scales
+    const size = d3.scaleSqrt()
+      .domain(d3.extent(nodes, d => d.count))
+      .range([10, 55]);  // bubble radius
+
+    // Keep color intuitive: red=low rating, green=high rating
+    const ratingMin = d3.min(nodes, d => d.avg);
+    const ratingMax = d3.max(nodes, d => d.avg);
+    const color = d3.scaleSequential(d3.interpolateRdYlGn)
+      .domain([Math.max(2.5, ratingMin ?? 2.5), Math.min(5, ratingMax ?? 5)]);
+
+    // Root group
+    const g = bsvg.append("g");
+
+    // Draw nodes
+    const circles = g.selectAll("circle")
+      .data(nodes, d => d.brand)
+      .join("circle")
+      .attr("r", d => size(d.count))
+      .attr("fill", d => color(d.avg))
+      .attr("stroke", "#222")
+      .attr("stroke-width", 1)
+      .attr("opacity", 0.9)
+      .attr("cursor", "pointer")
+      .on("mousemove", (e, d) => {
+        // tooltip
+        btip.style("display","block")
+            .style("left", e.pageX + 10 + "px")
+            .style("top",  e.pageY + 10 + "px")
+            .html(`
+              <b>${d.brand}</b><br/>
+              ${d.count} product${d.count>1?"s":""}${cat==="__all__" ? "" : ` · ${cat}`}<br/>
+              ⭐ avg rating: <b>${d3.format(".2f")(d.avg)}</b>
+            `);
+      })
+      .on("mouseleave", () => btip.style("display","none"))
+      .on("click", (_, d) => {
+        // On click, show top picks under your existing #brandPick box, if present
+        if (pickBox) {
+          const items = d.top3.map(p => `• ${p.name} (${d3.format(".2f")(p.rank)})`).join("<br>");
+          pickBox.innerHTML = `<b>${d.brand}</b> — top picks for <b>${skin}</b>${cat==="__all__" ? "" : ` · <i>${cat}</i>`}:<br>${items}`;
+          pickBox.scrollIntoView({behavior:"smooth", block:"nearest"});
+        }
+      });
+
+    // Abbreviated labels
+    const labelsSel = g.selectAll("text.brand")
+      .data(nodes, d => d.brand)
+      .join("text")
+      .attr("class", "brand")
+      .attr("font-size", "11px")
+      .attr("text-anchor", "middle")
+      .attr("pointer-events", "none")
+      .text(d => d.brand.length > 12 ? d.brand.slice(0,12) + "…" : d.brand);
+
+    // Force simulation for layout
+    const sim = d3.forceSimulation(nodes)
+      .force("center", d3.forceCenter(W/2, H/2))
+      .force("charge", d3.forceManyBody().strength(4))
+      .force("collide", d3.forceCollide().radius(d => size(d.count) + 3))
+      .on("tick", () => {
+        circles.attr("cx", d => d.x).attr("cy", d => d.y);
+        labelsSel.attr("x", d => d.x).attr("y", d => d.y + 4);
+      });
+
+    // Title/caption
+    bsvg.append("text")
+      .attr("x", 16)
+      .attr("y", 20)
+      .attr("class", "caption")
+      .text(`skin: ${skin}${cat==="__all__" ? "" : ` · category: ${cat}`} — size=count, color=avg rating (higher=greener)`);
+  }
 }
+
 
 
 });

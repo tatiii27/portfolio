@@ -1,0 +1,15 @@
+brand,num_products,avg_price,avg_rating,avg_actives,overlap_with_skin_topN,coverage_skin_topN,avg_lift_vs_label,num_high_lift(>1.5),avg_distinctiveness,num_distinct(>2x_label),example_overlap,price_per_active
+CLINIQUE,6,35.33,4.33,5.5,9,0.6,1.007,0,1.879,4,"Butylene Glycol, Phenoxyethanol, Water",6.42
+OLEHENRIKSEN,2,36.0,4.25,5.5,9,0.6,1.122,0,2.168,5,"Phenoxyethanol, Water, Glycerin",6.55
+FIRST AID BEAUTY,7,32.86,4.23,5.57,9,0.6,1.05,0,2.289,2,"Glycerin, Water, Phenoxyethanol",5.9
+KIEHL'S SINCE 1851,4,30.5,4.22,5.25,9,0.6,0.985,0,1.887,3,"Water, Phenoxyethanol, Glycerin",5.81
+TARTE,2,38.0,4.35,3.0,8,0.533,1.075,0,1.849,4,"Water, Phenoxyethanol, Glycerin",12.67
+PHILOSOPHY,2,39.0,4.05,2.0,8,0.533,1.06,0,1.748,5,"Glycerin, Water, Phenoxyethanol",19.5
+ORIGINS,4,34.25,4.32,8.0,7,0.467,0.939,0,1.907,6,"Butylene Glycol, Glycerin, Sodium Hyaluronate",4.28
+MURAD,2,40.0,4.25,9.5,7,0.467,1.074,0,1.961,3,"Butylene Glycol, Water, Phenoxyethanol",4.21
+IT COSMETICS,4,38.0,4.1,14.0,7,0.467,1.149,1,1.664,3,"Butylene Glycol, Glycerin, Phenoxyethanol",2.71
+LANEIGE,4,33.5,4.5,5.75,6,0.4,1.168,1,2.472,3,"Water, Ethylhexylglycerin, Glycerin",5.83
+CAUDALIE,4,26.5,4.3,4.0,6,0.4,1.131,0,2.372,7,"Water, Caprylyl Glycol, Potassium Sorbate",6.62
+BELIF,2,36.0,4.6,8.0,4,0.267,1.025,2,2.932,7,"Water, Glycerin, Butylene Glycol",4.5
+JOSIE MARAN,3,34.67,4.03,3.67,3,0.2,1.068,0,1.554,0,"Phenoxyethanol, Butylene Glycol, Caprylyl Glycol",9.45
+HERBIVORE,2,35.5,4.15,2.0,1,0.067,0.953,0,2.577,1,Glycerin,17.75

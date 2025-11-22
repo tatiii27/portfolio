@@ -1,0 +1,8 @@
+brand,num_products,avg_price,avg_rating,avg_actives,overlap_with_skin_topN,coverage_skin_topN,avg_lift_vs_label,num_high_lift(>1.5),avg_distinctiveness,num_distinct(>2x_label),example_overlap,price_per_active
+CAUDALIE,2,39.0,4.0,5.5,6,0.4,0.949,0,1.94,3,"Water, Caprylyl Glycol, Potassium Sorbate",7.09
+DRUNK ELEPHANT,2,25.5,4.1,7.5,7,0.467,0.944,0,1.922,5,"Glycerin, Caprylyl Glycol, Water",3.4
+FIRST AID BEAUTY,3,33.33,4.37,7.0,8,0.533,0.908,0,1.966,1,"Glycerin, Water, Phenoxyethanol",4.76
+IT COSMETICS,2,33.0,3.75,17.0,7,0.467,1.038,0,1.47,2,"Butylene Glycol, Glycerin, Phenoxyethanol",1.94
+ORIGINS,2,26.0,4.25,5.5,8,0.533,0.885,0,1.728,4,"Butylene Glycol, Glycerin, Sodium Hyaluronate",4.73
+PEACE OUT,2,19.0,4.25,1.5,3,0.2,1.058,0,7.253,6,"Butylene Glycol, Carbomer, Glycerin",12.67
+PETER THOMAS ROTH,2,32.5,3.95,3.5,9,0.6,0.951,0,1.582,3,"Water, Butylene Glycol, Glycerin",9.29

@@ -1,0 +1,28 @@
+brand,num_products,avg_price,avg_rating,avg_actives,overlap_with_skin_topN,coverage_skin_topN,avg_lift_vs_label,num_high_lift(>1.5),avg_distinctiveness,num_distinct(>2x_label),example_overlap,price_per_active
+BOSCIA,8,23.25,4.12,6.25,4,0.267,0.827,0,2.08,3,"Butylene Glycol, Glycerin, Water",3.72
+CLARINS,2,68.0,4.9,4.5,10,0.667,0.955,0,1.916,5,"Glycerin, Water, Phenoxyethanol",15.11
+DIOR,2,72.0,4.0,0.5,0,0.0,,0,,0,,72.0
+DR ROEBUCK’S,2,28.0,4.35,7.0,4,0.267,0.95,0,4.36,6,"Glycerin, Caprylyl Glycol, Water",4.0
+DR. BRANDT SKINCARE,4,59.75,4.3,6.25,9,0.6,0.964,0,1.556,3,"Phenoxyethanol, Water, Glycerin",9.56
+DR. JART+,25,14.68,4.11,4.88,6,0.4,0.823,0,1.636,5,"Butylene Glycol, Glycerin, Water",3.01
+FARMACY,4,26.5,4.47,7.25,6,0.4,0.851,0,1.3,2,"Glycerin, Water, Caprylic/Capric Triglyceride",3.66
+FIRST AID BEAUTY,4,31.0,4.28,5.75,9,0.6,0.952,0,2.206,4,"Glycerin, Water, Phenoxyethanol",5.39
+FOREO,6,15.67,3.08,1.0,0,0.0,,0,,0,,15.67
+GLAMGLOW,4,42.25,4.32,5.5,9,0.6,0.875,0,1.769,5,"Glycerin, Phenoxyethanol, Water",7.68
+GLOW RECIPE,2,15.0,3.65,4.0,4,0.267,0.78,0,2.704,3,"Glycerin, Sodium Hyaluronate, Xanthan Gum",3.75
+KIEHL'S SINCE 1851,4,44.25,4.25,5.5,9,0.6,1.058,0,2.004,4,"Water, Phenoxyethanol, Glycerin",8.05
+KORRES,2,40.0,4.4,7.5,6,0.4,1.062,0,2.018,4,"Water, Glycerin, Phenoxyethanol",5.33
+LANCÔME,4,34.25,4.55,2.75,5,0.333,0.995,0,1.853,5,"Water, Glycerin, Phenoxyethanol",12.45
+LANEIGE,4,19.0,4.47,3.25,6,0.4,0.864,0,1.687,3,"Water, Ethylhexylglycerin, Glycerin",5.85
+MURAD,2,38.0,4.2,5.0,7,0.467,0.901,0,1.88,4,"Butylene Glycol, Water, Phenoxyethanol",7.6
+OLEHENRIKSEN,2,34.0,4.4,11.0,9,0.6,0.995,0,1.843,4,"Phenoxyethanol, Water, Glycerin",3.09
+ORIGINS,15,22.8,4.11,5.73,7,0.467,0.967,0,1.928,6,"Butylene Glycol, Glycerin, Sodium Hyaluronate",3.98
+PETER THOMAS ROTH,8,63.5,4.21,5.88,9,0.6,0.884,0,1.525,2,"Water, Butylene Glycol, Glycerin",10.81
+PHILOSOPHY,2,36.0,4.65,2.0,8,0.533,0.986,0,1.671,4,"Glycerin, Water, Phenoxyethanol",18.0
+SATURDAY SKIN,2,6.0,4.45,4.0,3,0.2,0.77,0,1.839,3,"Glycerin, Water, Butylene Glycol",1.5
+SEPHORA COLLECTION,21,8.43,4.31,4.9,8,0.533,0.777,0,2.393,8,"Glycerin, Phenoxyethanol, Butylene Glycol",1.72
+SKIN INC SUPPLEMENT BAR,2,70.0,4.15,3.5,5,0.333,0.872,0,3.883,7,"Butylene Glycol, Glycerin, Water",20.0
+SKIN LAUNDRY,3,55.33,3.7,3.33,5,0.333,0.859,0,3.295,7,"Glycerin, Water, Butylene Glycol",16.6
+SUMMER FRIDAYS,2,46.0,4.3,4.5,1,0.067,0.832,0,4.534,4,Caprylic/Capric Triglyceride,10.22
+TATA HARPER,3,66.0,4.2,3.67,2,0.133,0.937,0,3.46,4,"Glycerin, Caprylic/Capric Triglyceride",18.0
+TOO COOL FOR SCHOOL,4,10.0,4.03,3.25,8,0.533,0.799,0,2.717,7,"Water, Butylene Glycol, Glycerin",3.08
